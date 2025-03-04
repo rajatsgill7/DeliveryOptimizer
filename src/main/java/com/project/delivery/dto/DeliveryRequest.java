@@ -10,16 +10,16 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 public class DeliveryRequest {
-    private double amanLat;
-    private double amanLon;
-    private double r1Lat;
-    private double r1Lon;
-    private double pt1;
-    private double r2Lat;
-    private double r2Lon;
-    private double pt2;
-    private double c1Lat;
-    private double c1Lon;
-    private double c2Lat;
-    private double c2Lon;
+    private double hubLatitude;
+    private double hubLongitude;
+    private double restaurant1Latitude;
+    private double restaurant1Longitude;
+    private double restaurant1PreparationTime;
+    private double restaurant2Latitude;
+    private double restaurant2Longitude;
+    private double restaurant2PreparationTime;
+    private double customer1Latitude;
+    private double customer1Longitude;
+    private double customer2Latitude;
+    private double customer2Longitude;
 }

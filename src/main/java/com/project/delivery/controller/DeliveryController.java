@@ -8,6 +8,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import reactor.core.publisher.Mono;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 @RestController
 @RequestMapping("/optimize")
 class DeliveryController {
@@ -18,11 +21,12 @@ class DeliveryController {
     private static final Logger logger = LoggerFactory.getLogger(DeliveryController.class);
 
     @PostMapping
-    public Mono<String> optimizeRoute(@RequestBody DeliveryRequest request) {
+    public List<Mono<String>> optimizeRoute(@RequestBody List<DeliveryRequest> request) {
         logger.info("Received request to optimize route.");
 
-        return deliveryService.processRequest(request);
-
+        return request.stream()
+                .map(deliveryService::processDeliveryRequest) // Mapping each request to processRequest
+                .collect(Collectors.toList()); // Collecting to a list
     }
 
 }
